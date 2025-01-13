@@ -17,6 +17,8 @@ spec:
       annotations:
         prometheus.io.scrape: "false"
     spec:
+      imagePullSecrets:
+      - name: registry-pull-secret
       containers:
       - name: session-db
         image: redis:alpine
@@ -31,7 +33,6 @@ spec:
               - CHOWN
               - SETGID
               - SETUID
-          readOnlyRootFilesystem: true
       nodeSelector:
         beta.kubernetes.io/os: linux
 ---

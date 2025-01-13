@@ -15,6 +15,8 @@ spec:
       labels:
         name: user-db
     spec:
+      imagePullSecrets:
+      - name: registry-pull-secret
       containers:
       - name: user-db
         image: weaveworksdemos/user-db:0.3.0
@@ -29,7 +31,6 @@ spec:
               - CHOWN
               - SETGID
               - SETUID
-          readOnlyRootFilesystem: true
         volumeMounts:
         - mountPath: /tmp
           name: tmp-volume

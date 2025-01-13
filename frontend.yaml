@@ -13,6 +13,8 @@ spec:
       labels:
         name: front-end
     spec:
+      imagePullSecrets:
+      - name: registry-pull-secret
       containers:
       - name: front-end
         image: kisahm/front-end:20230208
@@ -34,7 +36,6 @@ spec:
           capabilities:
             drop:
               - all
-          readOnlyRootFilesystem: true
         livenessProbe:
           httpGet:
             path: /

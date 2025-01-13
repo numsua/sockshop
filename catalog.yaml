@@ -15,6 +15,8 @@ spec:
       labels:
         name: catalogue
     spec:
+      imagePullSecrets:
+      - name: registry-pull-secret
       containers:
       - name: catalogue
         image: weaveworksdemos/catalogue:0.3.5
@@ -38,7 +40,6 @@ spec:
               - all
             add:
               - NET_BIND_SERVICE
-          readOnlyRootFilesystem: true
         livenessProbe:
           httpGet:
             path: /health

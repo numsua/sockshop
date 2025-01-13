@@ -15,6 +15,8 @@ spec:
       labels:
         name: user
     spec:
+      imagePullSecrets:
+      - name: registry-pull-secret
       containers:
       - name: user
         image: weaveworksdemos/user:0.4.7
@@ -38,7 +40,6 @@ spec:
               - all
             add:
               - NET_BIND_SERVICE
-          readOnlyRootFilesystem: true
         livenessProbe:
           httpGet:
             path: /health

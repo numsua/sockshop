@@ -17,6 +17,8 @@ spec:
       annotations:
         prometheus.io/scrape: "false"
     spec:
+      imagePullSecrets:
+      - name: registry-pull-secret
       containers:
       - name: rabbitmq
         image: rabbitmq:3.6.8-management
@@ -34,7 +36,6 @@ spec:
               - SETGID
               - SETUID
               - DAC_OVERRIDE
-          readOnlyRootFilesystem: true
       - name: rabbitmq-exporter
         image: kbudde/rabbitmq-exporter
         ports:
